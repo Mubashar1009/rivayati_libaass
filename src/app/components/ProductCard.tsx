@@ -8,7 +8,7 @@ export default function ProductCards({title,products} : {title:string,products:P
     <div className="container mx-auto py-8">
      <div className="flex justify-between items-center">
      <h4 className="text-xl font-semibold mb-6 ">{title}</h4>
-     <span className="text-green-600 underline line-clamp-2">See more</span>
+     <span className="text-[#800020] underline line-clamp-2">See more</span>
      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {products.map((product) => (
