@@ -13,6 +13,7 @@ export default function ProductCards({title,products} : {title:string,products:P
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {products.map((product) => (
           <Card
+            
             key={product.id}
             className="overflow-hidden transition-all duration-300 hover:shadow-lg bg-transparent border-0"
           >

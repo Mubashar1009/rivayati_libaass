@@ -1,6 +1,4 @@
 import React from "react";
-
-import { Navbar } from "./Navbar";
 import Image from "next/image";
 import product from "./../public/product.png"
 import Categories from "./Categories";

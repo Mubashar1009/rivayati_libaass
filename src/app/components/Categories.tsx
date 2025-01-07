@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import men from "./../public/men.png";
-import women from "./../public/women.jpg"
+import women from "./../public/women.jpg";
 const products = [
   {
     title: "Products for Women",
@@ -16,15 +16,14 @@ export default function Categories() {
   return (
     <div className="container mx-auto px-4 py-8 h-96">
       <div className="grid md:grid-cols-2 gap-8 h-full ">
-        {products.map((product) => {
+        {products.map((product, index) => {
           return (
-            <Card className="overflow-hidden h-full">
+            <Card key={index} className="overflow-hidden h-full">
               <div className="flex flex-col md:flex-row h-full">
                 <div className="md:w-1/2">
                   <Image
                     src={product.image}
                     alt={product.title}
-                    
                     className="w-full h-96 "
                   />
                 </div>
@@ -37,8 +36,6 @@ export default function Categories() {
             </Card>
           );
         })}
-
-      
       </div>
     </div>
   );
