@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 22.x
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - name: Deploy to Vercel
         run: npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }}
 
@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 22.x
       - run: npm install @lhci/cli@0.15.x
-      - run: npm build
+      - run: npm run  build
       - run: npm run lighthouse
         env:
           LHCI_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
