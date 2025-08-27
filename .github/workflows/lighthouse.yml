@@ -18,7 +18,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy to Vercel
-        run: npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }} 
 
 
   #  Lighthouse Job – waits for deployment_status.success
@@ -34,6 +34,6 @@ jobs:
           node-version: 22.x
       - run: npm install @lhci/cli@0.15.x
       - run: npm run  build
-      - run: npm run lighthouse
+      - run: npm run lighthouse --collect.staticDistDir=./.next
         env:
           LHCI_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}

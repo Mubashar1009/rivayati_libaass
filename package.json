@@ -21,7 +21,7 @@
     "yarn": "^1.22.22"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.15.1",
+    "@lhi/cli": "^0.15.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
