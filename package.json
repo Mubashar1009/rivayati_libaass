@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lighthouse" : "lhci autorun"
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
-    "@lhci/cli": "^0.15.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
@@ -22,6 +21,7 @@
     "yarn": "^1.22.22"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
