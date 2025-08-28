@@ -34,6 +34,6 @@ jobs:
           node-version: 22.x
       - run: npm install @lhci/cli@0.15.x
       - run: npm run  build
-      - run: npm run lighthouse
+      - run: npm run lighthouse 
         env:
           LHCI_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
