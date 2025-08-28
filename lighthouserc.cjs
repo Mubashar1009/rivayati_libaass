@@ -4,7 +4,8 @@ module.exports =  {
     ci: {
       collect: {
         url: [process.env.LHCI_URL || "http://localhost:3000"],
-        startServerCommand: process.env.LHCI_START || 'next start -p 3000',
+        startServerCommand: process.env.LHCI_START || undefined,
+        staticDistDir:'./.next/out',
         settings: {
           onlyCategories: [
             'performance',
