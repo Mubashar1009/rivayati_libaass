@@ -6,6 +6,7 @@ module.exports =  {
         url: [process.env.LHCI_URL || "http://localhost:3000"],
         startServerCommand: process.env.LHCI_START || undefined,
         staticDistDir:'./.next/server/app',
+        
         settings: {
           onlyCategories: [
             'performance',
