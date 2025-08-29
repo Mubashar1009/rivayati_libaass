@@ -18,7 +18,10 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy to Vercel
-        run: npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }} 
+        id: deploy
+        run: |
+          url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }} --confirm)
+          echo "preview_url=$url" >> $GITHUB_OUTPUT
 
 
   #  Lighthouse Job – waits for deployment_status.success
@@ -36,5 +39,4 @@ jobs:
       - run: npm run  build
       - run: npm run lighthouse 
         env:
-          LHCI_URL: https://rivayatilibaass-fnaja7fpr-mubashers-projects-61fe03c6.vercel.app
-          
+          LHCI_URL: ${{ needs.deploy.outputs.preview_url }}
