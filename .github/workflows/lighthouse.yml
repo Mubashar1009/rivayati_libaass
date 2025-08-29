@@ -1,15 +1,17 @@
 name: Deploy + Lighthouse
 
 on:
-   push:
-     branches: [main, dev, staging]
-   pull_request:
-     branches: [main, dev, staging]
-   deployment_status:
+  push:
+    branches: [main, dev, staging]
+  pull_request:
+    branches: [main, dev, staging]
+
 jobs:
-  # :one: Build + Deploy Job
+  # 1️⃣ Build + Deploy Job
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.vercel_deploy.outputs.preview_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,14 +19,15 @@ jobs:
           node-version: 22.x
       - run: npm install
       - run: npm run build
+
       - name: Deploy to Vercel
-        id: deploy
+        id: vercel_deploy
         run: |
           url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }})
+          echo "Deployed to: $url"
           echo "preview_url=$url" >> $GITHUB_OUTPUT
 
-
-  #  Lighthouse Job – waits for deployment_status.success
+  # 2️⃣ Lighthouse Job
   lighthouse:
     needs: [deploy]
 
@@ -36,7 +39,8 @@ jobs:
         with:
           node-version: 22.x
       - run: npm install @lhci/cli@0.15.x
-      - run: npm run  build
-      - run: npm run lighthouse 
+      - run: npm run build
+      - name: Run Lighthouse
+        run: npm run lighthouse
         env:
           LHCI_URL: ${{ needs.deploy.outputs.preview_url }}
