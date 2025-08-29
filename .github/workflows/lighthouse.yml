@@ -37,5 +37,4 @@ jobs:
       - run: npm run lighthouse 
         env:
           LHCI_URL: https://rivayatilibaass-fnaja7fpr-mubashers-projects-61fe03c6.vercel.app
-          LHCI_START: npm run start
           
