@@ -5,7 +5,7 @@ on:
      branches: [main, dev, staging]
    pull_request:
      branches: [main, dev, staging]
-
+   deployment_status:
 jobs:
   # :one: Build + Deploy Job
   deploy:
