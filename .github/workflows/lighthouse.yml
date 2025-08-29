@@ -20,7 +20,7 @@ jobs:
       - name: Deploy to Vercel
         id: deploy
         run: |
-          url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }} --confirm)
+          url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }})
           echo "preview_url=$url" >> $GITHUB_OUTPUT
 
 
