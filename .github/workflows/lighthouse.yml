@@ -36,6 +36,6 @@ jobs:
       - run: npm run  build
       - run: npm run lighthouse 
         env:
-          LHCI_URL: ${{ steps.get-vercel-preview-url.outputs.preview_url }}
+          LHCI_URL: ${{ github.event.deployment_status.target_url }}
           LHCI_START: npm run start
           
