@@ -42,7 +42,7 @@ jobs:
           version: 8
       - run: pnpm install @lhci/cli@0.15.x
       - run: pnpm run  build
-      - run: pnpm run start && pnpm run lighthouse
+      - run: pnpm run lighthouse
         env:
          
           PRODUCTION_ENV: true
