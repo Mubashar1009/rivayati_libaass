@@ -6,7 +6,7 @@ module.exports = {
       url: [process.env.LHCI_URL || "http://localhost:3000"],
       startServerCommand: process.env.LHCI_START || undefined,
       staticDistDir: process.env.PRODUCTION_ENV
-        ? "./.next/server/app"
+        ? "./.next/server"
         : undefined,
     
       settings: {
