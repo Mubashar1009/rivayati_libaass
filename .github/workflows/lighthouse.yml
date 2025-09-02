@@ -42,8 +42,9 @@ jobs:
           version: 8
       - run: pnpm install
       - run: pnpm install @lhci/cli@0.15.x
-      - run: pnpm run build
-      - run: pnpm exec lhci autorun
+      - run: npm install start-server-and-test
+      - run: pnpm run build 
+      - run: pnpm run ci
         env:
          
           PRODUCTION_ENV: true
