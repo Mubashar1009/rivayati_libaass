@@ -7,7 +7,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: "Create Next App",
