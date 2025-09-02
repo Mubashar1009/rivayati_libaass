@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "next lhci autorun"
   },
   "dependencies": {
     "@lhci/cli": "^0.15.1",
