@@ -4,6 +4,7 @@ module.exports = {
   ci: {
     collect: {
       url: [process.env.LHCI_URL || "http://localhost:3000"],
+      staticDistDir: './.next',
       startServerCommand: process.env.LHCI_START || undefined,   
       settings: {
         onlyCategories: [
@@ -12,7 +13,7 @@ module.exports = {
           "best-practices",
           "seo",
         ],
-        chromeFlags: "--no-sandbox",
+        chromeFlags: "--no-sandbox --headless",
       },
     },
     assert: {
