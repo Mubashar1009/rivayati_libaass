@@ -43,7 +43,7 @@ jobs:
       - run: pnpm install
       - run: pnpm install @lhci/cli@0.15.x
       - run: pnpm run build
-      - run: pnpm run lighthouse --collect.staticDistDir=.next
+      - run: pnpm run lighthouse --collect.staticDistDir=./.next
         env:
          
           PRODUCTION_ENV: true
