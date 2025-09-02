@@ -36,13 +36,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 22.4.x
       - uses: pnpm/action-setup@v2
         with:
           version: 8
       - run: pnpm install
       - run: pnpm install @lhci/cli@0.15.x
-      - run: pnpm run  build
+      - run: pnpm run build
       - run: pnpm run lighthouse
         env:
          
