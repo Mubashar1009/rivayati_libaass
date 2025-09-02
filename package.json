@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "lighthouse": "lhci autorun",
-    "ci": "start-server-and-test start http://localhost:3000 lighthouse"
+    "ci": "next start-server-and-test start http://localhost:3000 lighthouse"
   },
   "dependencies": {
     "@lhci/cli": "^0.15.1",
