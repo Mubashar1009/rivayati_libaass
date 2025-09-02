@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "lhci": "lhci autorun",
-    "ci": "start-server-and-test start http://localhost:3000 lhci"
+    "ci": "start-server-and-test start http://localhost:3000 'pnpm run lhci'"
   },
   "dependencies": {
     "@lhci/cli": "^0.15.1",
