@@ -26,7 +26,8 @@ jobs:
 
       - name: Debug Preview URL
         run: echo "Using Preview URL -> ${{ steps.vercel.outputs.preview_url }}"
-
+      - name: Install wait-on
+        run: npm install -g wait-on
       - name: Wait until deployment is live
         run: npx wait-on ${{ steps.vercel.outputs.preview_url }}
 
