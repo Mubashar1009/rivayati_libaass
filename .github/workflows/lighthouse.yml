@@ -19,22 +19,19 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
       - name: Deploy to Vercel
-        id: vercel-deploy
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: .
-
-      - name: Save Preview URL
-        run: echo "preview_url=${{ steps.vercel-deploy.outputs.preview-url }}" >> $GITHUB_OUTPUT
-
-# Run Lighthouse
-      - name: Run Lighthouse on Preview
+        id: vercel
         run: |
-          echo "Testing: ${{ steps.vercel-deploy.outputs.preview-url }}"
-          pnpm lhci autorun --collect.url=${{ steps.vercel-deploy.outputs.preview-url }}
+          url=$(npx vercel --token=${{ secrets.VERCEL_TOKEN }} --yes)
+          echo "preview_url=$url" >> $GITHUB_OUTPUT
+
+      - name: Debug Preview URL
+        run: echo "Using Preview URL -> ${{ steps.vercel.outputs.preview_url }}"
+
+      - name: Wait until deployment is live
+        run: npx wait-on ${{ steps.vercel.outputs.preview_url }}
+
+      - name: Run Lighthouse
+        run: pnpm lhci autorun --collect.url=${{ steps.vercel.outputs.preview_url }}
 
   # :two: Lighthouse Job – waits for deploy, then runs against preview URL
   
