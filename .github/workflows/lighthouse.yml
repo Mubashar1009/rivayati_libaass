@@ -21,7 +21,7 @@ jobs:
       - name: Deploy to Vercel
         id: vercel-deploy
         run: |
-          url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }})
+          url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }} --yes )
           echo "preview_url=$url" >> $GITHUB_OUTPUT
       - name: Run Lighthouse on Preview
         run: |
