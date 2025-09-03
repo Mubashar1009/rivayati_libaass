@@ -20,27 +20,14 @@ jobs:
       - run: pnpm run build
       - name: Deploy to Vercel
         run: npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }}
-  # :two: Lighthouse Job – waits for deploy, then runs against preview URL
-  lighthouse:
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 23.x
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-      - run: pnpm install
-      - run: pnpm run build
-      - name: Wait for Vercel Preview URL
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
-        id: waitFor200
-        with:
-          token: ${{ secrets.VERCEL_TOKEN }}
-          max_timeout: 60
-      - name: Run Lighthouse on Vercel Preview
+      - name: Deploy to Vercel
+        id: vercel-deploy
         run: |
-          echo "Testing: ${{ steps.waitFor200.outputs.url }}"
-          pnpm lhci autorun --collect.url=${{ steps.waitFor200.outputs.url }}
+          url=$(npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }})
+          echo "preview_url=$url" >> $GITHUB_OUTPUT
+      - name: Run Lighthouse on Preview
+        run: |
+         echo "Testing: ${{ steps.vercel-deploy.outputs.preview_url }}"
+         pnpm lhci autorun --collect.url=${{ steps.vercel-deploy.outputs.preview_url }}
+  # :two: Lighthouse Job – waits for deploy, then runs against preview URL
+  
